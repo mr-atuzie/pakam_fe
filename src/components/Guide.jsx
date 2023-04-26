@@ -47,7 +47,7 @@ const Guide = () => {
     <div>
       <div className=" bg-blue-50   py-14">
         <div className=" w-[90%] md:w-[80%] mx-auto ">
-          <div className=" grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-6 my-7">
+          <div className=" grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-6 my-7">
             {guides.map(({ name, id, text }) => {
               return <GuideCard key={id} name={name} text={text} />;
             })}
