@@ -31,7 +31,7 @@ const Steps = () => {
         <div className=" w-[90%] md:w-[80%] mx-auto ">
           <div className=" text-lg uppercase text-center font-medium">
             {" "}
-            How it works boobs
+            How it works
           </div>
           <p className=" text-center my-3 text-base text-gray-800">
             Sign up for a subscribtion today.Then,just call , or tap{" "}
