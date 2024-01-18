@@ -8,7 +8,7 @@ const Loader = () => {
         <div className="w-full h-full flex items-center justify-center">
           <svg
             aria-hidden="true"
-            className="inline w-16 h-16 text-gray-200 animate-spin  fill-blue-600"
+            className="inline w-16 h-16 text-gray-200 animate-spin  fill-green-600"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
