@@ -25,7 +25,7 @@ const Register = () => {
   };
 
   return (
-    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-100">
+    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">
       <div className=" bg-white w-[90%] lg:w-[50%] mx-auto shadow-md rounded-lg px-7   py-14">
         <div className=" flex gap-2 items-center justify-center mb-4">
           <div className=" bg-[#08432d] w-6 h-6 rounded-md flex justify-center items-center text-white">
@@ -134,7 +134,7 @@ const Register = () => {
         </form>
       </div>
 
-      <p className=" text-green-700 mt-14 font-medium text-sm">
+      <p className=" text-green-900 mt-14 font-medium text-sm">
         Powered by Pakam Technology
       </p>
     </div>
