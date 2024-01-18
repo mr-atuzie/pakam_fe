@@ -19,6 +19,8 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log({ username, password });
     setLoading(true);
   };
   return (
@@ -42,7 +44,7 @@ const Login = () => {
               </label>
 
               <input
-                className="border p-2.5   rounded-lg  block w-full  placeholder:text-sm "
+                className="border p-2   rounded-lg  block w-full  placeholder:text-sm "
                 type="text"
                 name="username"
                 placeholder="Enter your Username"
@@ -59,7 +61,7 @@ const Login = () => {
                 Password
               </label>
               <input
-                className="border p-2.5  block w-full  rounded-lg   placeholder:text-sm "
+                className="border p-2  block w-full  rounded-lg   placeholder:text-sm "
                 type="password"
                 name="password"
                 placeholder="Enter your Password"
@@ -76,7 +78,7 @@ const Login = () => {
           <div className=" flex justify-center items-center flex-col">
             <button
               disabled={loading}
-              className=" text-sm lg:text-base max-w-lg rounded-lg w-full text-center py-2.5  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
+              className=" text-sm lg:text-base max-w-lg rounded-lg w-full text-center py-2  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
               type="submit"
             >
               {loading ? "Loading" : "Login"}

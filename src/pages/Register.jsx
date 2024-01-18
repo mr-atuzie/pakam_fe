@@ -21,6 +21,8 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log({ firstname, lastname, username, password });
     setLoading(true);
   };
 
@@ -47,7 +49,7 @@ const Register = () => {
               </label>
 
               <input
-                className="border p-2.5  rounded-lg  block w-full placeholder:text-sm "
+                className="border p-2  rounded-lg  block w-full placeholder:text-sm "
                 type="text"
                 placeholder="Enter your First name"
                 name="firstname"
@@ -66,7 +68,7 @@ const Register = () => {
               </label>
 
               <input
-                className="border p-2.5   rounded-lg   block w-full placeholder:text-sm"
+                className="border p-2   rounded-lg   block w-full placeholder:text-sm"
                 type="text"
                 placeholder="Enter your Last name"
                 name="lastname"
@@ -85,7 +87,7 @@ const Register = () => {
               </label>
 
               <input
-                className="border p-2.5   rounded-lg  block w-full  placeholder:text-sm "
+                className="border p-2   rounded-lg  block w-full  placeholder:text-sm "
                 type="text"
                 name="username"
                 placeholder="Enter your Username"
@@ -103,7 +105,7 @@ const Register = () => {
                 Password
               </label>
               <input
-                className="border p-2.5  block w-full  rounded-lg   placeholder:text-sm "
+                className="border p-2  block w-full  rounded-lg   placeholder:text-sm "
                 type="password"
                 name="password"
                 placeholder="Enter your Password"
@@ -120,7 +122,7 @@ const Register = () => {
           <div className=" flex justify-center items-center flex-col">
             <button
               disabled={loading}
-              className=" text-sm lg:text-base max-w-lg rounded-lg w-full text-center py-2.5  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
+              className=" text-sm lg:text-base max-w-lg rounded-lg w-full text-center py-2  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
               type="submit"
             >
               {loading ? "Loading" : "Register"}

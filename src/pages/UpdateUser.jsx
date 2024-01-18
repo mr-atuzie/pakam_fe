@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-const AddUser = () => {
+const UpdateUser = () => {
   const initialState = {
     fullname: "",
     desc: "",
     quantity: "",
   };
 
+  const { id } = useParams();
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
 
@@ -20,13 +22,13 @@ const AddUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ fullname, desc, quantity });
+    console.log({ id, fullname, desc, quantity });
     setLoading(true);
   };
   return (
     <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">
       <div className=" bg-white w-[90%] lg:w-[50%] mx-auto shadow-md rounded-lg p-8">
-        <h2 className="text-xl  font-semibold mb-6 ">Create Assessment</h2>
+        <h2 className="text-xl  font-semibold mb-6 ">Update Assessment</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className=" w-full ">
@@ -100,4 +102,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default UpdateUser;
