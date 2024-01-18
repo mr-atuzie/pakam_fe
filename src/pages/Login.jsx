@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const Register = () => {
+const Login = () => {
   const initialState = {
-    firstname: "",
-    lastname: "",
     username: "",
     password: "",
   };
@@ -12,7 +10,7 @@ const Register = () => {
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
 
-  const { firstname, lastname, username, password } = formData;
+  const { username, password } = formData;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,9 +21,8 @@ const Register = () => {
   const handleSubmit = async (e) => {
     setLoading(true);
   };
-
   return (
-    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-100">
+    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">
       <div className=" bg-white w-[90%] lg:w-[50%] mx-auto shadow-md rounded-lg px-7   py-14">
         <div className=" flex gap-2 items-center justify-center mb-4">
           <div className=" bg-[#08432d] w-6 h-6 rounded-md flex justify-center items-center text-white">
@@ -33,50 +30,10 @@ const Register = () => {
           </div>
           <h1 className=" font-semibold text-[#08432d]">Pakam</h1>
         </div>
-        <h2 className="text-xl  font-semibold  text-center mb-6 ">
-          Create Account
-        </h2>
+        <h2 className="text-xl  font-semibold  text-center mb-6 ">Login</h2>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className=" w-full ">
-              <label
-                className=" font-medium  text-xs lg:text-sm mb-2"
-                htmlFor="firstname"
-              >
-                First name
-              </label>
-
-              <input
-                className="border p-2.5  rounded-lg  block w-full placeholder:text-sm "
-                type="text"
-                placeholder="Enter your First name"
-                name="firstname"
-                value={firstname}
-                onChange={handleInputChange}
-                id="firstname"
-              />
-            </div>
-
-            <div className=" ">
-              <label
-                className=" font-medium  text-xs lg:text-sm mb-2"
-                htmlFor="lastname"
-              >
-                Last name
-              </label>
-
-              <input
-                className="border p-2.5   rounded-lg   block w-full placeholder:text-sm"
-                type="text"
-                placeholder="Enter your Last name"
-                name="lastname"
-                value={lastname}
-                onChange={handleInputChange}
-                id="lastname"
-              />
-            </div>
-
-            <div className=" ">
+          <div className=" flex justify-center items-center  gap-4 flex-col">
+            <div className=" w-full max-w-lg ">
               <label
                 className=" font-medium  text-xs lg:text-sm"
                 htmlFor="username"
@@ -94,8 +51,7 @@ const Register = () => {
                 id="username"
               />
             </div>
-
-            <div className=" ">
+            <div className=" w-full max-w-lg ">
               <label
                 className=" font-medium text-xs lg:text-sm"
                 htmlFor="password"
@@ -123,22 +79,22 @@ const Register = () => {
               className=" text-sm lg:text-base max-w-lg rounded-lg w-full text-center py-2.5  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
               type="submit"
             >
-              {loading ? "Loading" : "Register"}
+              {loading ? "Loading" : "Login"}
             </button>
 
             <p className="text-xs text-center  font-medium mt-6  capitalize  text-gray-500">
               forgot Password?{" "}
-              <span className=" text-green-900 ml-1 ">retrieve now</span>
+              <span className=" text-green-700 ml-1 ">retrieve now</span>
             </p>
           </div>
         </form>
       </div>
 
-      <p className=" text-green-700 mt-14 font-medium text-sm">
+      <p className=" text-green-900 mt-14 font-medium text-sm">
         Powered by Pakam Technology
       </p>
     </div>
   );
 };
 
-export default Register;
+export default Login;
