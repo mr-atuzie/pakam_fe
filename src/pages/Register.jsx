@@ -20,6 +20,10 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = async (e) => {
+    setLoading(true);
+  };
+
   return (
     <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-100">
       <div className=" bg-white w-[90%] lg:w-[50%] mx-auto shadow-md rounded-sm px-7   py-14">
@@ -32,7 +36,7 @@ const Register = () => {
         <h2 className="text-xl  font-semibold  text-center mb-8 ">
           Create Account
         </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className=" w-full ">
               <label
