@@ -1,4 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddUser = () => {
   const initialState = {
@@ -9,6 +12,7 @@ const AddUser = () => {
 
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { fullname, desc, quantity } = formData;
 
@@ -20,8 +24,39 @@ const AddUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ fullname, desc, quantity });
     setLoading(true);
+
+    if (!fullname || !desc || !quantity) {
+      setLoading(false);
+      return toast.error("All fields are required");
+    }
+
+    const userData = { fullname, desc, quantity };
+
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/pakam/create-assessment`,
+        userData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setLoading(false);
+
+      toast.success("Assessment added successfully");
+      navigate("/dashboard");
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      setLoading(false);
+      toast.error(message);
+    }
   };
   return (
     <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">

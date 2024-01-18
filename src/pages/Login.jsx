@@ -1,5 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const initialState = {
@@ -9,6 +12,8 @@ const Login = () => {
 
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const { username, password } = formData;
 
@@ -20,12 +25,48 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ username, password });
     setLoading(true);
+
+    if (!username || !password) {
+      setLoading(false);
+      return toast.error("All fields are required");
+    }
+
+    if (password.length < 8) {
+      setLoading(false);
+      return toast.error("Password must be up to 8 characters");
+    }
+
+    const userData = { username, password };
+
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/pakam/login`,
+        userData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setLoading(false);
+
+      toast.success("Login successfull");
+      navigate("/dashboard");
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      setLoading(false);
+      toast.error(message);
+    }
   };
   return (
-    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">
-      <div className=" bg-white w-[90%] lg:w-[50%] mx-auto shadow-md rounded-lg px-7   py-14">
+    <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200 py-10">
+      <div className=" bg-white w-[90%] lg:w-[43%] mx-auto shadow-md rounded-lg px-7   py-14">
         <div className=" flex gap-2 items-center justify-center mb-4">
           <div className=" bg-[#08432d] w-6 h-6 rounded-md flex justify-center items-center text-white">
             <FaTrash />

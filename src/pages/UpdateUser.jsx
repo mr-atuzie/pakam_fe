@@ -1,5 +1,7 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateUser = () => {
   const initialState = {
@@ -11,6 +13,7 @@ const UpdateUser = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { fullname, desc, quantity } = formData;
 
@@ -22,8 +25,39 @@ const UpdateUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ id, fullname, desc, quantity });
     setLoading(true);
+
+    if (!fullname || !desc || !quantity) {
+      setLoading(false);
+      return toast.error("All fields are required");
+    }
+
+    const userData = { fullname, desc, quantity };
+
+    try {
+      await axios.patch(
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/pakam/update-assessment/${id}`,
+        userData,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setLoading(false);
+
+      toast.success("Assessment updated successfully");
+      navigate("/dashboard");
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      setLoading(false);
+      toast.error(message);
+    }
   };
   return (
     <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200">
@@ -94,7 +128,7 @@ const UpdateUser = () => {
             className=" text-sm lg:text-base  rounded-lg  text-center px-4 py-2  mt-10 bg-[#08432d] disabled:bg-green-300 text-white "
             type="submit"
           >
-            {loading ? "Loading" : "Submit"}
+            {loading ? "Updating" : "Submit"}
           </button>
         </form>
       </div>

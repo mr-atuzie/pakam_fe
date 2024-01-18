@@ -4,10 +4,16 @@ import Register from "./pages/Register";
 import AddUser from "./pages/AddUser";
 import UpdateUser from "./pages/UpdateUser";
 import Dashboard from "./pages/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
