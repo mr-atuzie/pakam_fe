@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import DeleteModal from "../components/DeleteModal";
+import { MdOutlineRefresh } from "react-icons/md";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,7 @@ const Dashboard = () => {
           <div className=" flex justify-end">
             <Link to={"/add-user"}>
               <button
-                className=" text-sm    rounded-lg  text-center px-4 py-2  mb-10 bg-[#08432d] disabled:bg-green-300 text-white "
+                className=" text-sm    rounded-lg  text-center px-4 py-2  mb-14 bg-[#08432d] disabled:bg-green-300 text-white "
                 type="submit"
               >
                 Create
@@ -69,7 +70,15 @@ const Dashboard = () => {
             </Link>
           </div>
 
-          <div className="relative overflow-x-auto shadow-md  sm:rounded-lg">
+          <div className=" bg-white w-full border-b-2 px-6 py-3 rounded-t-lg flex juxtify-between    border-gray-200">
+            <div className=" flex items-center gap-2">
+              <MdOutlineRefresh />
+              <p className=" text-gray-500 text-sm font-medium">Refresh</p>
+            </div>
+
+            <div></div>
+          </div>
+          <div className="relative overflow-x-auto shadow-md  sm:rounded-b-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500  bg-white ">
               <thead className="  text-gray-700  ">
                 <tr className="border-b-2    border-gray-200">
