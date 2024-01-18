@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import logo from "../assets/pakam.jpg";
 
 const Register = () => {
   const initialState = {
@@ -70,11 +71,7 @@ const Register = () => {
     <div className=" w-full min-h-screen flex justify-center flex-col items-center bg-gray-200 py-10">
       <div className=" bg-white w-[90%] lg:w-[43%] mx-auto shadow-md rounded-lg px-7   py-14">
         <div className=" flex gap-2 items-center justify-center mb-4">
-          <img
-            src="https://mail.google.com/mail/u/0?ui=2&ik=ea5f91f97e&attid=0.0.1.1&permmsgid=msg-f:1788339788750751843&th=18d17590162f8863&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ8sHz-irG3uoqTPKhVc35OvMJHCazgmXp1FYnSNx19dBPlHqemu8nvgZp359Rf6hUREc4D4UscyZWKhDK3u7UDbeRh0t94Uh3Yna-V5oRl0gncrSsE7VIQ3BL0&disp=emb"
-            alt=""
-            width={80}
-          />
+          <img src={logo} alt="" width={80} />
         </div>
         <h2 className="text-xl  font-semibold  text-center mb-6 ">
           Create Account
